@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html><head><meta charset="utf-8"/><meta content="0;url=./" http-equiv="refresh"/></head><body>
+<script>
+(function() {
+  try {
+    var isMobile = Math.min(window.innerWidth, document.documentElement.clientWidth) <= 900;
+    if (!isMobile) return;
+
+    var overlay = document.createElement('div');
+    overlay.id = 'mobile-gate-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.inset = '0';
+    overlay.style.background = '#ffffff';
+    overlay.style.display = 'flex';
+    overlay.style.flexDirection = 'column';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.textAlign = 'center';
+    overlay.style.zIndex = '2147483647';
+    overlay.style.padding = '24px';
+    overlay.style.fontFamily = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+
+    var img = document.createElement('img');
+    img.alt = 'Sad Kirby';
+    img.style.maxWidth = '60vw';
+    img.style.height = 'auto';
+    img.style.marginBottom = '16px';
+    img.src = 'images/sad_kirby.jpg';
+    overlay.appendChild(img);
+
+    var big = document.createElement('div');
+    big.textContent = 'Sorry, this website has not been optimized for mobile (yet).';
+    big.style.fontWeight = '600';
+    big.style.fontSize = '1.6rem';
+    big.style.lineHeight = '1.35';
+    overlay.appendChild(big);
+
+    var small = document.createElement('div');
+    small.textContent = 'For any inquiries, please contact me at contact@rudonic.ca';
+    small.style.marginTop = '12px';
+    small.style.fontWeight = '500';
+    small.style.fontSize = '1.05rem';
+    small.style.color = '#333';
+    overlay.appendChild(small);
+
+    var btn = document.createElement('button');
+    btn.textContent = 'Alternate site';
+    btn.style.marginTop = '20px';
+    btn.style.padding = '10px 18px';
+    btn.style.fontSize = '1rem';
+    btn.style.fontFamily = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+    btn.style.fontWeight = '600';
+    btn.style.border = '2px solid #000';
+    btn.style.background = '#fff';
+    btn.style.cursor = 'pointer';
+    btn.onclick = function() {
+      window.location.href = 'https://guns.lol/rudonic';
+    };
+    overlay.appendChild(btn);
+
+    var kids = Array.prototype.slice.call(document.body.children);
+    kids.forEach(function(el) {
+      if (el !== overlay) { el.style.visibility = 'hidden'; }
+    });
+    document.body.appendChild(overlay);
+  } catch (e) {
+    console && console.warn && console.warn('mobile gate failed', e);
+  }
+})();
+</script>
+</body></html>
